@@ -6,6 +6,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal'
 import {Link} from "react-router-dom";
+import PopUpModal from "./PopUpModal";
 
 const WeekSection = (props) => {
     const { startDate, endDate } = props.weekInfo
@@ -29,25 +30,26 @@ const WeekSection = (props) => {
                         {`${startDate.getMonth()+1}/${startDate.getDate()} - ${endDate.getMonth()+1}/${endDate.getDate()}`}
                     </div>
                 </div>
-                <Modal
-                    show={infoDetailStatus}
-                    onHide={handleClose}
-                    backdrop="static"
-                    keyboard={false}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Week Information</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        I will not close if you click outside me. Don't even try to press
-                        escape key.
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Link to={`/add-week-journal?startDate=${startDate.toString()}&endDate=${endDate.toString()}`} >
-                            <Button onClick={handleClose}>Edit</Button>
-                        </Link>
-                    </Modal.Footer>
-                </Modal>
+                <PopUpModal showModal={infoDetailStatus} onHandleClose={handleClose} info={props.weekInfo} mode={"week"} />
+                {/*<Modal*/}
+                {/*    show={infoDetailStatus}*/}
+                {/*    onHide={handleClose}*/}
+                {/*    backdrop="static"*/}
+                {/*    keyboard={false}*/}
+                {/*>*/}
+                {/*    <Modal.Header closeButton>*/}
+                {/*        <Modal.Title>Week Information</Modal.Title>*/}
+                {/*    </Modal.Header>*/}
+                {/*    <Modal.Body>*/}
+                {/*        I will not close if you click outside me. Don't even try to press*/}
+                {/*        escape key.*/}
+                {/*    </Modal.Body>*/}
+                {/*    <Modal.Footer>*/}
+                {/*        <Link to={`/add-week-journal?startDate=${startDate.toString()}&endDate=${endDate.toString()}`} >*/}
+                {/*            <Button onClick={handleClose}>Edit</Button>*/}
+                {/*        </Link>*/}
+                {/*    </Modal.Footer>*/}
+                {/*</Modal>*/}
             </div>
 
         </div>

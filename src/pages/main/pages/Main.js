@@ -31,7 +31,7 @@ const Main = () => {
             <div className={`${styles['yearWrapper']} ${styles[yearVisibilityStatus]}`}>
                 {weekObj && weekObj.years.map((year, index) => {
                     return (
-                        <YearSection key={index} quarters={year} />
+                        <YearSection key={index} year={year} />
                     )
                 })}
             </div>

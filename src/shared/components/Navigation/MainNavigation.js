@@ -5,11 +5,12 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button'
 
+import {Link} from "react-router-dom";
 
 const MainNavigation = () => {
     return (
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -23,7 +24,9 @@ const MainNavigation = () => {
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
-                    <Button variant="outline-success">Search</Button>
+                <Link to="/login">
+                    <Button variant="outline-success">Login</Button>
+                </Link>
             </Navbar.Collapse>
         </Navbar>
     );

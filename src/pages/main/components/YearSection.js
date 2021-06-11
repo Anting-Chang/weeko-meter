@@ -14,11 +14,11 @@ const YearSection = (props) => {
 
     return (
         <div className={styles.quarterWrapper} >
-            <div className={styles.yearTextHidden} onClick={handleYearModal}>{props.quarters.currentYear}</div>
-            <QuarterSection key={1} weeks={props.quarters.quarters[0].weeks}/>
-            <QuarterSection key={2} weeks={props.quarters.quarters[1].weeks}/>
-            <QuarterSection key={3} weeks={props.quarters.quarters[2].weeks}/>
-            <QuarterSection key={4} weeks={props.quarters.quarters[3].weeks}/>
+            <div className={styles.yearTextHidden} onClick={handleYearModal}>{props.year.currentYear}</div>
+            <QuarterSection key={1} quarter={props.year.quarters[0]} year={props.year.currentYear}/>
+            <QuarterSection key={2} quarter={props.year.quarters[1]} year={props.year.currentYear}/>
+            <QuarterSection key={3} quarter={props.year.quarters[2]} year={props.year.currentYear}/>
+            <QuarterSection key={4} quarter={props.year.quarters[3]} year={props.year.currentYear}/>
         </div>
     );
 };

@@ -14,7 +14,7 @@ const addWeek = (year, quarter) => {
             startDate: lastWeek,
             endDate: endDate,
             color: 1,
-            text: '',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum, id porta ante volutpat.',
 
         })
         weekCount ++
@@ -43,6 +43,7 @@ export const createWeek = (numYears, startDate) => {
     for (let i = 0; i < numYears; i++) {
         weekInfoObj.years.push({
             numYear: i,
+            yearText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum',
             currentYear: startYear + i,
             quarters: []
         })
@@ -50,7 +51,7 @@ export const createWeek = (numYears, startDate) => {
             // console.log(weekInfoObj.years)
             weekInfoObj.years[i].quarters.push({
                 numQuarter: q,
-                quarterText: '',
+                quarterText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum',
                 quarterColor: 2,
                 weeks: []
             })

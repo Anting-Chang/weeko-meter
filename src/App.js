@@ -10,6 +10,7 @@ import {
 
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Main from "./pages/main/pages/Main";
+import Login from "./pages/user/pages/Login";
 
 import { useAuth } from "./shared/hooks/auth-hook";
 
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path="/add-week-journal">
                     Add week jornal
+                </Route>
+                <Route path="/login">
+                    <Login />
                 </Route>
                 <Redirect to="/"/>
             </Switch>
