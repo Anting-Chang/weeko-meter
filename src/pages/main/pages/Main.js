@@ -23,6 +23,7 @@ const Main = () => {
     const [weekObj, setWeekObj] = useState(null)
     const [yearVisibilityStatus, setYearVisibilityStatus] = useState('yearWrapperHide')
     const [ifRendering, setIfRendering] = useState(false)
+    const { innerWidth: width, innerHeight: height } = window;
 
     const auth = useContext(AuthContext)
     const { isLoading, error, sendRequest, clearError } = useHttpClient()
@@ -43,9 +44,30 @@ const Main = () => {
                     }
                 )
                 const { expectedYears, birthday } = responseData.weekObj
-                console.log(responseData.weekObj)
-                const createdWeekObj = createWeek(expectedYears,new Date(birthday))
-                const loadedWeekObj = addJournalToCreatedWeek(createdWeekObj,responseData.weekObj, colorMap)
+                console.log('window width',width)
+                let loadedWeekObj;
+                if (width < 500) {
+                    const today = new Date()
+                    const currentYear = today.getFullYear()
+                    const datedBirthday = new Date(birthday)
+                    const birthYear = datedBirthday.getFullYear()
+                    today.setFullYear(currentYear-2)
+                    const createdWeekObj = createWeek(expectedYears,new Date(birthday))
+                    console.log('createdWeekObj')
+
+                    loadedWeekObj = addJournalToCreatedWeek(createdWeekObj,responseData.weekObj, colorMap)
+                    console.log('loadedWeekObj')
+
+                    const yearsObj = loadedWeekObj.years.slice(currentYear-birthYear-2,currentYear-birthYear+4)
+                    console.log('yearsObj',yearsObj)
+
+                    loadedWeekObj.years = yearsObj
+                    console.log(loadedWeekObj.years)
+                } else {
+                    const createdWeekObj = createWeek(expectedYears,new Date(birthday))
+                    loadedWeekObj = addJournalToCreatedWeek(createdWeekObj,responseData.weekObj, colorMap)
+                }
+
                 console.log('loaded week obj',loadedWeekObj)
                 setIfRendering(true)
                 setTimeout(() => {
