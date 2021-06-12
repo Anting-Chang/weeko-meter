@@ -24,6 +24,7 @@ const Main = () => {
     const [yearVisibilityStatus, setYearVisibilityStatus] = useState('yearWrapperHide')
     const [ifRendering, setIfRendering] = useState(false)
     const { innerWidth: width, innerHeight: height } = window;
+    const screenWidth = screen.width
 
     const auth = useContext(AuthContext)
     const { isLoading, error, sendRequest, clearError } = useHttpClient()
@@ -46,7 +47,7 @@ const Main = () => {
                 const { expectedYears, birthday } = responseData.weekObj
                 console.log('window width',width)
                 let loadedWeekObj;
-                if (width < 500) {
+                if (screenWidth < 1000) {
                     const today = new Date()
                     const currentYear = today.getFullYear()
                     const datedBirthday = new Date(birthday)
