@@ -25,6 +25,12 @@
     }
 }
 
+@media only screen and (max-width: 450px) {
+    .yearWrapper {
+        margin-left: 20px;
+    }
+}
+
 .yearWrapperHide {
     opacity: 0;
     visibility: hidden;

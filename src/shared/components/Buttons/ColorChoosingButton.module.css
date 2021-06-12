@@ -12,3 +12,9 @@
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+@media screen and (max-width: 500px){
+    .btnWrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}

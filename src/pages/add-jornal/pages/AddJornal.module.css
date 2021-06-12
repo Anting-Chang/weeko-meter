@@ -9,6 +9,19 @@
     width: 50vw;
 }
 
+@media screen and (max-width: 992px) {
+    .formWrapper {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .formWrapper {
+        padding: 1rem;
+        width: 95vw;
+    }
+}
+
 .formTitle {
     font-size: 2rem;
     margin-bottom: 10px;
