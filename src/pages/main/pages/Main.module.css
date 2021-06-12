@@ -36,3 +36,10 @@
     visibility: visible;
     transition: opacity 0.5s ease;
 }
+
+.loading {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    padding: 20px;
+}

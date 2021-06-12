@@ -5,38 +5,69 @@ import {
     BrowserRouter as Router,
     Route,
     Redirect,
-    Switch
+    Switch,
+    useHistory
 } from 'react-router-dom';
 
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Main from "./pages/main/pages/Main";
 import Login from "./pages/user/pages/Login";
+import SetUp from "./pages/user/pages/SetUp";
 
 import { useAuth } from "./shared/hooks/auth-hook";
+import { AuthContext } from "./shared/context/auth-context";
+import {useContext} from "react";
+import AddJornal from "./pages/add-jornal/pages/AddJornal";
 
 function App() {
     const { token, logout, login, userId } = useAuth()
+    const auth = useContext(AuthContext)
 
+    let routes
 
-    return (
-        <Router>
-            <MainNavigation />
+    if (!!token) {
+        routes = (
             <Switch>
                 <Route path="/" exact>
                     <Main />
                 </Route>
-                <Route path="/userinfo" exact>
-                    Userinfo
-                </Route>
-                <Route path="/add-week-journal">
-                    Add week jornal
-                </Route>
-                <Route path="/login">
+                <Route path="/login" exact>
                     <Login />
+                </Route>
+                <Route path="/setup" exact>
+                    <SetUp />
+                </Route>
+                <Route path="/add-journal/:yearNum/:quarter/:weekNum/:jid/:mode" exact>
+                    <AddJornal />
                 </Route>
                 <Redirect to="/"/>
             </Switch>
-        </Router>
+        )
+    } else {
+        routes = (
+            <Switch>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Redirect to="/login"/>
+            </Switch>
+        )
+    }
+
+    return (
+        <AuthContext.Provider value={{
+            isLoggedIn: !!token,
+            token: token,
+            userId: userId,
+            login: login,
+            logout: logout
+        }}>
+            <Router>
+                <MainNavigation />
+                { routes }
+            </Router>
+        </AuthContext.Provider>
+
     );
 }
 

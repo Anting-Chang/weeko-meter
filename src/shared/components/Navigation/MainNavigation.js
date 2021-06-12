@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -6,27 +6,28 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button'
 
 import {Link} from "react-router-dom";
+import {useAuth} from "../../hooks/auth-hook";
+import {AuthContext} from "../../context/auth-context";
 
 const MainNavigation = () => {
+    const auth = useContext(AuthContext)
+
+    const signOutHandler = () => {
+        auth.logout()
+    }
+
     return (
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand>Week Journal</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
+                    {auth.isLoggedIn && <Nav.Link as={Link} to="/" >Home</Nav.Link>}
                 </Nav>
-                <Link to="/login">
+                {!auth.isLoggedIn && <Link to="/login">
                     <Button variant="outline-success">Login</Button>
-                </Link>
+                </Link>}
+                {auth.isLoggedIn && <Button variant="outline-dark" onClick={signOutHandler}>Sign Out</Button>}
             </Navbar.Collapse>
         </Navbar>
     );

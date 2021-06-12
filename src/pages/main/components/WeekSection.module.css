@@ -8,7 +8,7 @@
     border-radius: 2px;
     height: 11px;
     width: 10px;
-    background-color: #ccc;
+    /*background-color: #ccc;*/
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -34,7 +34,7 @@
 
 .weekCubeWrapper:hover .weekCube{
     transform: scale(1.3);
-    background-color: #61dafb;
+    background-color: #61dafb !important;
     transition: all 0.3s ease;
 }
 

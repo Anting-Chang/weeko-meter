@@ -4,7 +4,7 @@ import styles from './QuarterCube.module.css'
 
 const QuarterCube = (props) => {
     return (
-        <div className={styles.cube} onClick={props.onCubeClick}>
+        <div className={styles.cube} style={{backgroundColor: `${props.color}`}} onClick={props.onCubeClick}>
 
         </div>
     );

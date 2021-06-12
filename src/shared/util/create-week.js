@@ -3,18 +3,20 @@ let weekInfoObj = {}
 let lastWeek;
 
 const addWeek = (year, quarter) => {
-    let weekCount = 1
+    let weekCount = 0
     let maxMonth = (quarter*3) - 1
     let initialYear = lastWeek.getFullYear()
     // if last week does not reach next quarter, continue to add weeks
     while (lastWeek.getMonth() <= maxMonth && lastWeek.getFullYear() === initialYear) {
         let endDate = addDays(lastWeek)
         weekInfoObj.years[year].quarters[quarter-1].weeks.push({
+            yearNum: year,
+            quarter: quarter,
             weekNum: weekCount,
             startDate: lastWeek,
             endDate: endDate,
-            color: 1,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum, id porta ante volutpat.',
+            color: '#ccc',
+            jid: 0,
 
         })
         weekCount ++
@@ -42,17 +44,19 @@ export const createWeek = (numYears, startDate) => {
     lastWeek = new Date(startDate)
     for (let i = 0; i < numYears; i++) {
         weekInfoObj.years.push({
-            numYear: i,
-            yearText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum',
+            yearNum: i,
+            jid: 0,
             currentYear: startYear + i,
+            color: '#e9ecef',
             quarters: []
         })
         for (let q = 1; q < 5; q++) {
             // console.log(weekInfoObj.years)
             weekInfoObj.years[i].quarters.push({
-                numQuarter: q,
-                quarterText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in enim a tortor ornare consectetur sed eget arcu. Morbi egestas enim ac orci porta euismod. Aenean a massa elementum, varius libero vel, ornare purus. Suspendisse imperdiet magna sed urna pretium lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin id diam et odio fermentum ornare. Duis a fringilla tellus. Praesent posuere at dolor ut commodo. Donec dignissim suscipit mauris in pulvinar. Donec consequat felis enim, sed ultrices quam commodo vel. Mauris in nunc viverra, varius odio at, eleifend ante. Aenean rhoncus erat eget turpis aliquet viverra. Etiam ultricies dolor vitae orci elementum',
-                quarterColor: 2,
+                yearNum: i,
+                quarter: q,
+                jid: 0,
+                color: '#aaa',
                 weeks: []
             })
             addWeek(i, q)
@@ -60,4 +64,32 @@ export const createWeek = (numYears, startDate) => {
     }
     console.log(weekInfoObj)
     return weekInfoObj
+}
+
+export const addJournalToCreatedWeek = (createdWeek, weekObj) => {
+    if (weekObj.weekJournal.length > 0) {
+        weekObj.weekJournal.map( week => {
+            const { jid, yearNum, quarter, weekNum, color } = week
+            console.log('add journal to created function week',week)
+            createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].jid = jid
+            createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = color
+        })
+    }
+    if (weekObj.quarterJournal.length > 0) {
+        weekObj.quarterJournal.map( singleQuarter => {
+            const { jid, yearNum, quarter, color } = singleQuarter
+            console.log('add journal to created function quarter',singleQuarter)
+            createdWeek.years[yearNum].quarters[quarter-1].jid = jid
+            createdWeek.years[yearNum].quarters[quarter-1].color = color
+        })
+    }
+    if (weekObj.yearJournal.length > 0) {
+        weekObj.yearJournal.map( year => {
+            const { jid, yearNum, color } = year
+            console.log('add journal to created function year',year)
+            createdWeek.years[yearNum].jid = jid
+            createdWeek.years[yearNum].color = color
+        })
+    }
+    return createdWeek
 }
