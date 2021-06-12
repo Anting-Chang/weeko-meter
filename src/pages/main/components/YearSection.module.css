@@ -59,6 +59,14 @@
     /*background-color: #dcf5fd;*/
 }
 
+@media screen and (max-width: 500px ){
+    .yearTextHidden {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0px, 0px);
+    }
+}
+
 .yearTextHidden:hover {
     color: white;
     background-color: #61dafb !important;
