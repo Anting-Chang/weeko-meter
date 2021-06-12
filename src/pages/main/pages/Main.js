@@ -9,13 +9,15 @@ import Spinner from 'react-bootstrap/Spinner'
 import styles from './Main.module.css'
 import {AuthContext} from "../../../shared/context/auth-context";
 import {useHttpClient} from "../../../shared/hooks/http-hook";
+import {useSelector} from "react-redux";
+import {selectColor} from "../../../shared/store/slice/colorSlice";
 
-const colorMap = [
-    "#d8f3dc",
-    "#74c69d",
-    "#40916c",
-    "#1b4332"
-]
+// const colorMap = [
+//     "#d8f3dc",
+//     "#74c69d",
+//     "#40916c",
+//     "#1b4332"
+// ]
 
 const Main = () => {
     const [weekObj, setWeekObj] = useState(null)
@@ -24,6 +26,7 @@ const Main = () => {
 
     const auth = useContext(AuthContext)
     const { isLoading, error, sendRequest, clearError } = useHttpClient()
+    const colorMap = useSelector(selectColor)
 
     const getWeekObj = () => {
         console.log('get week obj button pressed')

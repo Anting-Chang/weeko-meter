@@ -35,9 +35,10 @@ const PopUpModal = (props) => {
                 </div>}
             </Modal.Header>
             <Modal.Body>
-                {props.mode === 'week' && <div>{props.journal ? props.journal : 'Does not have a weekly journal ... yet :)'}</div>}
-                {props.mode === 'quarter' && <div>{props.journal ? props.journal : 'Does not have a quarterly journal ... yet :)'}</div>}
-                {props.mode === 'year' && <div>{props.journal ? props.journal : 'Does not have a yearly journal ... yet :)'}</div>}
+                {!props.journal && <div style={{color: '#999'}}>Does not have a journal ... yet :)</div>}
+                {props.mode === 'week' && props.journal && <div>{props.journal}</div>}
+                {props.mode === 'quarter' && props.journal && <div>{props.journal}</div>}
+                {props.mode === 'year' && props.journal && <div>{props.journal}</div>}
             </Modal.Body>
             <Modal.Footer>
                 {props.mode === 'week' && <Link

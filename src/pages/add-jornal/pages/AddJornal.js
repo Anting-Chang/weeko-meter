@@ -10,12 +10,15 @@ import * as Yup from "yup";
 import {useHttpClient} from "../../../shared/hooks/http-hook";
 import {AuthContext} from "../../../shared/context/auth-context";
 import ColorChoosingButton from "../../../shared/components/Buttons/ColorChoosingButton";
+import {useSelector} from "react-redux";
+import {selectColor} from "../../../shared/store/slice/colorSlice";
 
 const AddJornal = (props) => {
     const { yearNum, quarter, weekNum, jid, mode } = useParams()
     const auth = useContext(AuthContext)
     const history = useHistory()
     const { isLoading, error, sendRequest, clearError } = useHttpClient()
+    const colorList = useSelector(selectColor)
 
     const [title, setTitle] = useState()
     const [color, setColor] = useState()
@@ -25,9 +28,12 @@ const AddJornal = (props) => {
         if (jid != 0) {
             setIfCreateMode(false)
         }
+        setTimeout(() => {
+            console.log(colorList)
+        },1000)
 
         const getJournalById = async() => {
-            if (!ifCreateMode) {
+            if (jid != 0) {
                 try {
                     const responseData = await sendRequest('content/getJournalById', 'POST',
                         JSON.stringify({
@@ -149,9 +155,17 @@ const AddJornal = (props) => {
                             {formik.errors.journal}
                         </Form.Control.Feedback>
                     </Form.Group>
-                    {ifCreateMode && <div style={{marginBottom: '20px'}}>
+                    {ifCreateMode && mode === 'week' && <div style={{marginBottom: '20px'}}>
                         <div style={{fontSize: '1rem', color:'#666'}}>Choose a cube color</div>
-                        <ColorChoosingButton onChooseColor={changeColor}/>
+                        <ColorChoosingButton colorList={colorList.weekColor} onChooseColor={changeColor}/>
+                    </div>}
+                    {ifCreateMode && mode === 'quarter' && <div style={{marginBottom: '20px'}}>
+                        <div style={{fontSize: '1rem', color:'#666'}}>Choose a cube color</div>
+                        <ColorChoosingButton colorList={colorList.quarterColor} onChooseColor={changeColor}/>
+                    </div>}
+                    {ifCreateMode && mode === 'year' && <div style={{marginBottom: '20px'}}>
+                        <div style={{fontSize: '1rem', color:'#666'}}>Choose a cube color</div>
+                        <ColorChoosingButton colorList={colorList.yearColor} onChooseColor={changeColor}/>
                     </div>}
                     {error && <Alert variant="danger">
                         {error}

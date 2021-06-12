@@ -75,7 +75,7 @@ export const addJournalToCreatedWeek = (createdWeek, weekObj, colorMap) => {
             console.log('add journal to created function week',week)
             createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].jid = jid
             if (color >= 0) {
-                createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = colorMap[color]
+                createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = colorMap.weekColor[color]
             } else {
                 createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = color
             }
@@ -88,7 +88,7 @@ export const addJournalToCreatedWeek = (createdWeek, weekObj, colorMap) => {
             createdWeek.years[yearNum].quarters[quarter-1].jid = jid
             const value = Number(color)
             if (!!value) {
-                createdWeek.years[yearNum].quarters[quarter-1].color = colorMap[value]
+                createdWeek.years[yearNum].quarters[quarter-1].color = colorMap.quarterColor[value]
             } else {
                 createdWeek.years[yearNum].quarters[quarter-1].color = color
             }
@@ -100,7 +100,7 @@ export const addJournalToCreatedWeek = (createdWeek, weekObj, colorMap) => {
             console.log('add journal to created function year',year)
             createdWeek.years[yearNum].jid = jid
             if (color >= 0) {
-                createdWeek.years[yearNum].color = colorMap[color]
+                createdWeek.years[yearNum].color = colorMap.yearColor[color]
             } else {
                 createdWeek.years[yearNum].color = color
             }

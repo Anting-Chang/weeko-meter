@@ -28,10 +28,9 @@ const Login = (props) => {
                 }),
                 {'Content-Type': 'application/json'}
             )
-            console.log('console.log(responseData.user.id)')
-            console.log(responseData)
             auth.login(responseData.userId, responseData.token)
-            if (responseData.weekObj.years === null) {
+            console.log('signing in', responseData.weekObj)
+            if (responseData.weekObj.birthday == null) {
                 console.log('years is null')
                 history.push('/setup')
             } else {
@@ -58,9 +57,11 @@ const Login = (props) => {
                 {'Content-Type': 'application/json'}
             )
             console.log('responseDate')
-            console.log(responseData.user.id)
+            console.log(responseData)
             auth.login(responseData.user.id, responseData.token)
-            if (responseData.user.weekObj.years === null) {
+            console.log('signing up',responseData.user)
+            if (responseData.user.weekObj == null) {
+                console.log('signing up pushed to setup')
                 history.push('/setup')
             }
             // console.log(auth.userId)
