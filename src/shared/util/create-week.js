@@ -66,13 +66,19 @@ export const createWeek = (numYears, startDate) => {
     return weekInfoObj
 }
 
-export const addJournalToCreatedWeek = (createdWeek, weekObj) => {
+
+
+export const addJournalToCreatedWeek = (createdWeek, weekObj, colorMap) => {
     if (weekObj.weekJournal.length > 0) {
         weekObj.weekJournal.map( week => {
             const { jid, yearNum, quarter, weekNum, color } = week
             console.log('add journal to created function week',week)
             createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].jid = jid
-            createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = color
+            if (color >= 0) {
+                createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = colorMap[color]
+            } else {
+                createdWeek.years[yearNum].quarters[quarter-1].weeks[weekNum].color = color
+            }
         })
     }
     if (weekObj.quarterJournal.length > 0) {
@@ -80,7 +86,12 @@ export const addJournalToCreatedWeek = (createdWeek, weekObj) => {
             const { jid, yearNum, quarter, color } = singleQuarter
             console.log('add journal to created function quarter',singleQuarter)
             createdWeek.years[yearNum].quarters[quarter-1].jid = jid
-            createdWeek.years[yearNum].quarters[quarter-1].color = color
+            const value = Number(color)
+            if (!!value) {
+                createdWeek.years[yearNum].quarters[quarter-1].color = colorMap[value]
+            } else {
+                createdWeek.years[yearNum].quarters[quarter-1].color = color
+            }
         })
     }
     if (weekObj.yearJournal.length > 0) {
@@ -88,7 +99,11 @@ export const addJournalToCreatedWeek = (createdWeek, weekObj) => {
             const { jid, yearNum, color } = year
             console.log('add journal to created function year',year)
             createdWeek.years[yearNum].jid = jid
-            createdWeek.years[yearNum].color = color
+            if (color >= 0) {
+                createdWeek.years[yearNum].color = colorMap[color]
+            } else {
+                createdWeek.years[yearNum].color = color
+            }
         })
     }
     return createdWeek

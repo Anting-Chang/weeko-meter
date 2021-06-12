@@ -9,6 +9,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import {useHttpClient} from "../../../shared/hooks/http-hook";
 import {AuthContext} from "../../../shared/context/auth-context";
+import ColorChoosingButton from "../../../shared/components/Buttons/ColorChoosingButton";
 
 const AddJornal = (props) => {
     const { yearNum, quarter, weekNum, jid, mode } = useParams()
@@ -18,10 +19,15 @@ const AddJornal = (props) => {
 
     const [title, setTitle] = useState()
     const [color, setColor] = useState()
+    const [ifCreateMode, setIfCreateMode] = useState(true)
 
     useEffect(() => {
+        if (jid != 0) {
+            setIfCreateMode(false)
+        }
+
         const getJournalById = async() => {
-            if (jid !== 0) {
+            if (!ifCreateMode) {
                 try {
                     const responseData = await sendRequest('content/getJournalById', 'POST',
                         JSON.stringify({
@@ -45,15 +51,12 @@ const AddJornal = (props) => {
         switch (mode) {
             case 'week':
                 setTitle('Weekly Journal')
-                setColor('#76c893')
                 break;
             case 'quarter':
                 setTitle('Quarterly Journal')
-                setColor('#34a0a4')
                 break;
             case 'year':
                 setTitle('Yearly Journal')
-                setColor('#d9ed92')
                 break;
         }
         console.log(yearNum,quarter,weekNum,jid,mode)
@@ -61,7 +64,7 @@ const AddJornal = (props) => {
 
     const postJournal = async (values) => {
         console.log(values.journal)
-        if (jid === 0) {
+        if (ifCreateMode) {
             try {
                 const responseData = await sendRequest('content/postJournal', 'POST',
                     JSON.stringify({
@@ -91,7 +94,6 @@ const AddJornal = (props) => {
                     JSON.stringify({
                         jid: jid,
                         journal: values.journal,
-                        color: color
                     }),
                     {
                         'Content-Type': 'application/json',
@@ -108,6 +110,11 @@ const AddJornal = (props) => {
             }
         }
 
+    }
+
+    const changeColor = (colorValue) => {
+        setColor(colorValue)
+        console.log('color value',colorValue)
     }
 
     const formik = useFormik({
@@ -142,6 +149,10 @@ const AddJornal = (props) => {
                             {formik.errors.journal}
                         </Form.Control.Feedback>
                     </Form.Group>
+                    {ifCreateMode && <div style={{marginBottom: '20px'}}>
+                        <div style={{fontSize: '1rem', color:'#666'}}>Choose a cube color</div>
+                        <ColorChoosingButton onChooseColor={changeColor}/>
+                    </div>}
                     {error && <Alert variant="danger">
                         {error}
                     </Alert>}

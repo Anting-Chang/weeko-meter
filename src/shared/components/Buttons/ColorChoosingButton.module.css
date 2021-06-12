@@ -1,0 +1,14 @@
+.btnBase {
+    color: #fff;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.btnWrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}

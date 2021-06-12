@@ -10,6 +10,13 @@ import styles from './Main.module.css'
 import {AuthContext} from "../../../shared/context/auth-context";
 import {useHttpClient} from "../../../shared/hooks/http-hook";
 
+const colorMap = [
+    "#d8f3dc",
+    "#74c69d",
+    "#40916c",
+    "#1b4332"
+]
+
 const Main = () => {
     const [weekObj, setWeekObj] = useState(null)
     const [yearVisibilityStatus, setYearVisibilityStatus] = useState('yearWrapperHide')
@@ -35,7 +42,7 @@ const Main = () => {
                 const { expectedYears, birthday } = responseData.weekObj
                 console.log(responseData.weekObj)
                 const createdWeekObj = createWeek(expectedYears,new Date(birthday))
-                const loadedWeekObj = addJournalToCreatedWeek(createdWeekObj,responseData.weekObj)
+                const loadedWeekObj = addJournalToCreatedWeek(createdWeekObj,responseData.weekObj, colorMap)
                 console.log('loaded week obj',loadedWeekObj)
                 setIfRendering(true)
                 setTimeout(() => {
