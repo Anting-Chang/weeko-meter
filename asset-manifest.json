@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/weeko-meter/static/css/main.77d4ddcd.chunk.css",
+    "main.js": "/weeko-meter/static/js/main.6380053d.chunk.js",
+    "main.js.map": "/weeko-meter/static/js/main.6380053d.chunk.js.map",
+    "runtime-main.js": "/weeko-meter/static/js/runtime-main.157427ba.js",
+    "runtime-main.js.map": "/weeko-meter/static/js/runtime-main.157427ba.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/weeko-meter/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.300cded2.chunk.js": "/weeko-meter/static/js/2.300cded2.chunk.js",
+    "static/js/2.300cded2.chunk.js.map": "/weeko-meter/static/js/2.300cded2.chunk.js.map",
+    "static/js/3.ef6298ee.chunk.js": "/weeko-meter/static/js/3.ef6298ee.chunk.js",
+    "static/js/3.ef6298ee.chunk.js.map": "/weeko-meter/static/js/3.ef6298ee.chunk.js.map",
+    "index.html": "/weeko-meter/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/weeko-meter/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.77d4ddcd.chunk.css.map": "/weeko-meter/static/css/main.77d4ddcd.chunk.css.map",
+    "static/js/2.300cded2.chunk.js.LICENSE.txt": "/weeko-meter/static/js/2.300cded2.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/weeko-meter/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.157427ba.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.300cded2.chunk.js",
+    "static/css/main.77d4ddcd.chunk.css",
+    "static/js/main.6380053d.chunk.js"
+  ]
+}
