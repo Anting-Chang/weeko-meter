@@ -24,7 +24,7 @@ const Main = () => {
     const [yearVisibilityStatus, setYearVisibilityStatus] = useState('yearWrapperHide')
     const [ifRendering, setIfRendering] = useState(false)
     const { innerWidth: width, innerHeight: height } = window;
-    const screenWidth = screen.width
+    const screenWidth = window.screen.width
 
     const auth = useContext(AuthContext)
     const { isLoading, error, sendRequest, clearError } = useHttpClient()
