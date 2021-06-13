@@ -62,7 +62,7 @@ function App() {
             login: login,
             logout: logout
         }}>
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <MainNavigation />
                 { routes }
             </Router>
