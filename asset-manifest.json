@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/weeko-meter/static/css/main.a0fbc0b6.chunk.css",
-    "main.js": "/weeko-meter/static/js/main.bd52d27c.chunk.js",
-    "main.js.map": "/weeko-meter/static/js/main.bd52d27c.chunk.js.map",
+    "main.js": "/weeko-meter/static/js/main.1b7dd270.chunk.js",
+    "main.js.map": "/weeko-meter/static/js/main.1b7dd270.chunk.js.map",
     "runtime-main.js": "/weeko-meter/static/js/runtime-main.157427ba.js",
     "runtime-main.js.map": "/weeko-meter/static/js/runtime-main.157427ba.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/weeko-meter/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.300cded2.chunk.js": "/weeko-meter/static/js/2.300cded2.chunk.js",
-    "static/js/2.300cded2.chunk.js.map": "/weeko-meter/static/js/2.300cded2.chunk.js.map",
+    "static/js/2.e5460629.chunk.js": "/weeko-meter/static/js/2.e5460629.chunk.js",
+    "static/js/2.e5460629.chunk.js.map": "/weeko-meter/static/js/2.e5460629.chunk.js.map",
     "static/js/3.ef6298ee.chunk.js": "/weeko-meter/static/js/3.ef6298ee.chunk.js",
     "static/js/3.ef6298ee.chunk.js.map": "/weeko-meter/static/js/3.ef6298ee.chunk.js.map",
     "index.html": "/weeko-meter/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/weeko-meter/static/css/2.4c97ca4f.chunk.css.map",
     "static/css/main.a0fbc0b6.chunk.css.map": "/weeko-meter/static/css/main.a0fbc0b6.chunk.css.map",
-    "static/js/2.300cded2.chunk.js.LICENSE.txt": "/weeko-meter/static/js/2.300cded2.chunk.js.LICENSE.txt",
+    "static/js/2.e5460629.chunk.js.LICENSE.txt": "/weeko-meter/static/js/2.e5460629.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/weeko-meter/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.157427ba.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.300cded2.chunk.js",
+    "static/js/2.e5460629.chunk.js",
     "static/css/main.a0fbc0b6.chunk.css",
-    "static/js/main.bd52d27c.chunk.js"
+    "static/js/main.1b7dd270.chunk.js"
   ]
 }
