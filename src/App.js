@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Redirect,
     Switch,
