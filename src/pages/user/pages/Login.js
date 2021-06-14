@@ -124,7 +124,7 @@ const Login = (props) => {
                                 onBlur={formikLogin.handleBlur}
                                 value={formikLogin.values.loginEmail}
                                 isValid={formikLogin.touched.loginEmail && !formikLogin.errors.loginEmail}
-                                isInvalid={!!formikLogin.errors.loginEmail}
+                                isInvalid={!!formikLogin.errors.loginEmail && formikLogin.touched.loginEmail}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {formikLogin.errors.loginEmail}
@@ -140,13 +140,16 @@ const Login = (props) => {
                                 onChange={formikLogin.handleChange}
                                 onBlur={formikLogin.handleBlur}
                                 value={formikLogin.values.loginPassword}
-                                isValid={formikLogin.touched.loginPassword && !formikLogin.errors.loginPassword}
-                                isInvalid={!!formikLogin.errors.loginPassword}
+                                isValid={formikLogin.touched.loginPassword && formikLogin.errors.loginPassword}
+                                isInvalid={!!formikLogin.errors.loginPassword && formikLogin.touched.loginPassword}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {formikLogin.errors.loginPassword}
                             </Form.Control.Feedback>
                         </Form.Group>
+                        <Alert variant="primary">
+                            Use email:test@test.com password:123456 to login for testing or signup a new account
+                        </Alert>
                         {error && <Alert variant="danger">
                             {error}
                         </Alert>}
@@ -176,7 +179,7 @@ const Login = (props) => {
                                 onBlur={formikSignup.handleBlur}
                                 value={formikSignup.values.signupName}
                                 isValid={formikSignup.touched.signupName && !formikSignup.errors.signupName}
-                                isInvalid={!!formikSignup.errors.signupName}
+                                isInvalid={!!formikSignup.errors.signupName && formikSignup.touched.signupName}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {formikSignup.errors.signupName}
@@ -192,7 +195,7 @@ const Login = (props) => {
                                 onBlur={formikSignup.handleBlur}
                                 value={formikSignup.values.signupEmail}
                                 isValid={formikSignup.touched.signupEmail && !formikSignup.errors.signupEmail}
-                                isInvalid={!!formikSignup.errors.signupEmail}
+                                isInvalid={!!formikSignup.errors.signupEmail && formikSignup.touched.signupEmail}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {formikSignup.errors.signupEmail}
@@ -209,7 +212,7 @@ const Login = (props) => {
                                 onBlur={formikSignup.handleBlur}
                                 value={formikSignup.values.signupPassword}
                                 isValid={formikSignup.touched.signupPassword && !formikSignup.errors.signupPassword}
-                                isInvalid={!!formikSignup.errors.signupPassword}
+                                isInvalid={!!formikSignup.errors.signupPassword && formikSignup.touched.signupPassword}
                             />
                             <Form.Control.Feedback type="invalid">
                                 {formikSignup.errors.signupPassword}

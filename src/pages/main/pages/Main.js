@@ -5,6 +5,7 @@ import { createWeek, addJournalToCreatedWeek } from "../../../shared/util/create
 
 import YearSection from "../components/YearSection";
 import Spinner from 'react-bootstrap/Spinner'
+import Alert from 'react-bootstrap/Alert'
 
 import styles from './Main.module.css'
 import {AuthContext} from "../../../shared/context/auth-context";
@@ -23,6 +24,7 @@ const Main = () => {
     const [weekObj, setWeekObj] = useState(null)
     const [yearVisibilityStatus, setYearVisibilityStatus] = useState('yearWrapperHide')
     const [ifRendering, setIfRendering] = useState(false)
+    const [ifShowAlert, setIfShowAlert] = useState(true)
     const { innerWidth: width, innerHeight: height } = window;
     const screenWidth = window.screen.width
 
@@ -87,15 +89,33 @@ const Main = () => {
         }
     }, [weekObj])
 
+    const closeAlert = () => {
+        setIfShowAlert(false)
+    }
 
 
     return (
         <div>
             <div className={styles.loading}>
-                {ifRendering &&
+                <div>
+                    {ifRendering &&
                     <Spinner animation="border" role="status">
                         <span className="sr-only">Loading...</span>
                     </Spinner>}
+                    <div>
+                        {ifShowAlert && !ifRendering && <Alert variant="dark" onClose={closeAlert} dismissible>
+                            You can click on every cube to record your journal! Even those long year cubes. Put yearly
+                            resolutions in there and see how far it misses when next year come.
+                        </Alert>}
+                    </div>
+                    <div>
+                        {!ifRendering && screenWidth<500 && <Alert variant="dark">
+                            Try it on the desktop as well! The app is meant to show whole life and all of the journals in one single page.
+                        </Alert>}
+                    </div>
+                </div>
+
+
             </div>
             <div className={`${styles['yearWrapper']} ${styles[yearVisibilityStatus]}`}>
                 {weekObj && weekObj.years.map((year, index) => {

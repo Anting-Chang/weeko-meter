@@ -1,0 +1,16 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.github {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #999;
+}

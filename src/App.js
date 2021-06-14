@@ -13,6 +13,7 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import Main from "./pages/main/pages/Main";
 import Login from "./pages/user/pages/Login";
 import SetUp from "./pages/user/pages/SetUp";
+import About from "./pages/about/About";
 
 import { useAuth } from "./shared/hooks/auth-hook";
 import { AuthContext } from "./shared/context/auth-context";
@@ -40,6 +41,9 @@ function App() {
                 <Route path="/add-journal/:yearNum/:quarter/:weekNum/:jid/:mode" exact>
                     <AddJornal />
                 </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
                 <Redirect to="/"/>
             </Switch>
         )
@@ -48,6 +52,9 @@ function App() {
             <Switch>
                 <Route path="/login">
                     <Login />
+                </Route>
+                <Route path="/about">
+                    <About />
                 </Route>
                 <Redirect to="/login"/>
             </Switch>
