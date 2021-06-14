@@ -1,5 +1,13 @@
 # Week Journal (I changed the name)
 
+![image](https://user-images.githubusercontent.com/5653157/121857289-75160b00-ccc3-11eb-9dd7-8704784a68cc.png)
+
+Live Demo: https://anting-chang.github.io/weeko-meter
+```
+I used the free tie in heroku, so the first login might take up to 30 seconds
+as the server shuts down after 30min of unuse. (Its free....so)
+```
+
 ## Tech used
 
 Front-end: react
